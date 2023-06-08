@@ -28,19 +28,19 @@ const Banner = () => {
     </>
 
     return (
-        <Slider {...settings}>
+        <Slider {...settings} className="z-10">
             <div className="slider-1">
-                <div className="bg-black bg-opacity-60 h-screen py-32 md:py-52">
+                <div className="bg-black bg-opacity-60 min-h-screen md:py-52 py-32">
                     {sliderContent}
                 </div>
             </div>
             <div className="slider-2">
-                <div className="bg-black bg-opacity-60 h-screen py-52">
+                <div className="bg-black bg-opacity-60 min-h-screen md:py-52 py-32">
                     {sliderContent}
                 </div>
             </div>
             <div className="slider-3">
-                <div className="bg-black bg-opacity-60 h-screen py-52">
+                <div className="bg-black bg-opacity-60 min-h-screen md:py-52 py-32">
                     {sliderContent}
                 </div>
             </div>
