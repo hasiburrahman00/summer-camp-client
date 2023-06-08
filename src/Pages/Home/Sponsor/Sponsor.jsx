@@ -11,7 +11,7 @@ import sponsorImg4 from '../../../assets/Images/sponsor_logo4.png'
 
 const Sponsor = () => {
     return (
-        <div className='bg-[#f2f7fc] py-16 text-center mb-[400px]'>
+        <div className='bg-[#f2f7fc] py-16 text-center '>
             <div className='w-11/12 mx-auto md:w-9/12'>
                 <Swiper
                     slidesPerView={5}
@@ -21,22 +21,22 @@ const Sponsor = () => {
                     className="mySwiper"
                 >
                     <SwiperSlide>
-                        <img src={sponsorImg1} alt="" />
+                        <img className='mx-auto' src={sponsorImg1} alt="" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={sponsorImg2} alt="" />
+                        <img className='mx-auto' src={sponsorImg2} alt="" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={sponsorImg3} alt="" />
+                        <img className='mx-auto' src={sponsorImg3} alt="" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={sponsorImg1} alt="" />
+                        <img className='mx-auto' src={sponsorImg1} alt="" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={sponsorImg4} alt="" />
+                        <img className='mx-auto' src={sponsorImg4} alt="" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={sponsorImg1} alt="" />
+                        <img className='mx-auto' src={sponsorImg1} alt="" />
                     </SwiperSlide>
                 </Swiper>
             </div>
