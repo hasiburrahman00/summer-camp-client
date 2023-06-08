@@ -13,13 +13,13 @@ const NavBar = () => {
             <details>
                 <summary>Pages</summary>
                 <ul className="p-2">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/">Home</Link></li>
+                    <li className='font-bold'><Link to="/">Instructors</Link></li>
+                    <li className='font-bold'><Link to="/">Home</Link></li>
+                    <li className='font-bold'><Link to="/">Home</Link></li>
                 </ul>
             </details>
         </li>
-        <li className='font-bold'><a>Blog</a></li>
+        <li className='font-bold'><a>Courses</a></li>
     </>
 
 
@@ -50,13 +50,16 @@ const NavBar = () => {
 
 
                     {/* user profile or login button  */}
-                    <button className="btn btn-outline  flex">
+                    <button className="btn btn-outline flex dropdown dropdown-bottom dropdown-end">
                         Hasibur
                         <div className="dropdown dropdown-bottom dropdown-end">
                             <label tabIndex={0} className=" m-1"><IoMdArrowDropdown className='h-6 w-6' /></label>
-                            <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                <li><a>Item 1</a></li>
-                                <li><a>Item 2</a></li>
+                            <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 text-black">
+                                <li><Link>Dashboard</Link></li>
+                                <li><Link>My Accounts</Link></li>
+                                <li><Link>My Orders</Link></li>
+                                <li><Link>My Courses</Link></li>
+                                <button className="btn btn-warning btn-sm mt-4">Sign Out</button>
                             </ul>
                         </div>
                     </button>

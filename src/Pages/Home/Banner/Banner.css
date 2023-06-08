@@ -1,0 +1,21 @@
+.slick-arrow {
+    display: none !important;
+}
+.slider-1 {
+    background-image: url('../../../assets/Images/slider_image1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+.slider-2 {
+    background-image: url('../../../assets/Images/slider_image2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+.slider-3 {
+    background-image: url('../../../assets/Images/slider_image3.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
