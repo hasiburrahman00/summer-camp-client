@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import loginImg from '../../assets/Images/login_page.png'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import './Login.css'
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Login = () => {
-
+    
     const [showPassword, setShowPassword] = useState(false);
 
     const handleShowPasword = event => {
@@ -19,6 +20,10 @@ const Login = () => {
         const password = form.password.value;
         console.log(email, password);
     }
+
+    // Authentication user by Login 
+
+
 
 
     return (
