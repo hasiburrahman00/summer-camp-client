@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import loginImg from '../../assets/Images/login_page.png'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import './Register.css'
 import { FcGoogle } from 'react-icons/fc';
 import { useForm } from "react-hook-form";
+import { AuthContext } from '../../Provider/AuthProvider';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
 
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     const handleShowPasword = event => {
         event.preventDefault();
@@ -19,9 +22,23 @@ const Register = () => {
     const onSubmit = handleSubmit(data => {
         console.log(data)
 
-        
+
         // reset();
     });
+
+    // handle login authentication: 
+    const { SingInGoogle } = useContext(AuthContext)
+    const handleLoginWithGoogle = () => {
+        SingInGoogle()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate('/')
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
 
 
 
@@ -114,10 +131,11 @@ const Register = () => {
 
                     </div>
                     <button className='btn btn-warning w-full mt-8'>Register</button>
+                    <small className='mt-4'>Already have an  account? please <Link to={`/login`} className='font-semibold'> Login </Link></small>
                     <div className="divider divider-vertical">OR</div>
                 </form>
                 <div>
-                    <button className='btn  w-full '> <FcGoogle className='h-6 w-6' />Sign up using Google</button>
+                    <button onClick={handleLoginWithGoogle} className='btn  w-full '> <FcGoogle className='h-6 w-6' />Sign up using Google</button>
                 </div>
             </div>
         </div>

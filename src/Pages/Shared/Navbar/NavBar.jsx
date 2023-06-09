@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import logo from '../../../assets/Images/logo.png'
+import { AuthContext } from '../../../Provider/AuthProvider';
+import { FaUserAlt } from 'react-icons/fa';
 
 const NavBar = () => {
+
+    const { loading, user, logout } = useContext(AuthContext);
+    const userName = user?.displayName?.split(" ")[0];
+
+    const handleLogout = () => {
+        logout()
+            .then(() => {
+                console.log('log out successfully');
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
+
 
     const navItems = <>
         <li className='font-bold' ><Link to="/">Home</Link></li>
@@ -38,7 +54,7 @@ const NavBar = () => {
                         </ul>
                     </div>
                     {/* <Link to="/"><img src={logo} alt="" /></Link> */}
-                    <button className="btn btn-warning text-3xl font-semibold text-white">TuTorSeba</button>
+                    <Link to={`/`}><button className="btn btn-warning md:text-3xl font-semibold text-white">TuTorSeba</button></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -53,19 +69,28 @@ const NavBar = () => {
 
 
                     {/* user profile or login button  */}
-                    <button className="btn btn-outline flex dropdown dropdown-bottom dropdown-end">
-                        Hasibur
-                        <div className="dropdown dropdown-bottom dropdown-end">
-                            <label tabIndex={0} className=" m-1"><IoMdArrowDropdown className='h-6 w-6' /></label>
-                            <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 text-black z-50 ">
-                                <li><Link>Dashboard</Link></li>
-                                <li><Link>My Accounts</Link></li>
-                                <li><Link>My Orders</Link></li>
-                                <li><Link>My Courses</Link></li>
-                                <button className="btn btn-warning btn-sm mt-4">Sign Out</button>
-                            </ul>
-                        </div>
-                    </button>
+                    {
+                        user ?
+                            <>
+                                <button className="btn btn-outline flex dropdown dropdown-bottom dropdown-end">
+                                    <img className='h-8 w-8 rounded-full' src={user?.photoURL} alt="" />
+                                    {userName}
+                                    <div className="dropdown dropdown-bottom dropdown-end">
+                                        <label tabIndex={0} className=" m-1"><IoMdArrowDropdown className='h-6 w-6' /></label>
+                                        <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 text-black z-50 ">
+                                            <li><Link>Dashboard</Link></li>
+                                            <li><Link>My Accounts</Link></li>
+                                            <li><Link>My Orders</Link></li>
+                                            <li><Link>My Courses</Link></li>
+                                            <button onClick={handleLogout} className="btn btn-warning btn-sm mt-4">Sign Out</button>
+                                        </ul>
+                                    </div>
+                                </button>
+                            </> :
+                            <>
+                               <Link to={`/login`}> <button className='btn btn-warning'><FaUserAlt className='h-6 w-6' />Sign In</button></Link>
+                            </>
+                    }
                 </div>
             </div>
 
