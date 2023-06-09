@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import logo from '../../../assets/Images/logo.png'
@@ -8,13 +8,20 @@ import { FaUserAlt } from 'react-icons/fa';
 
 const NavBar = () => {
 
+    const navigate = useNavigate();
     const { loading, user, logout } = useContext(AuthContext);
     const userName = user?.displayName?.split(" ")[0];
 
     const handleLogout = () => {
         logout()
             .then(() => {
-                console.log('log out successfully');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Logout Account Successfully ',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                
             })
             .catch(error => {
                 console.log(error.message)
@@ -74,7 +81,7 @@ const NavBar = () => {
                             <>
                                 <button className="btn btn-outline flex dropdown dropdown-bottom dropdown-end">
                                     <img className='h-8 w-8 rounded-full' src={user?.photoURL} alt="" />
-                                    {userName}
+                                    <span className='hidden md:block'>{userName}</span>
                                     <div className="dropdown dropdown-bottom dropdown-end">
                                         <label tabIndex={0} className=" m-1"><IoMdArrowDropdown className='h-6 w-6' /></label>
                                         <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 text-black z-50 ">

@@ -3,10 +3,14 @@ import loginImg from '../../assets/Images/login_page.png'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import './Login.css'
 import { AuthContext } from '../../Provider/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
 
+    const navigate = useNavigate()
+    const { SignInAccount } = useContext(AuthContext)
     const [showPassword, setShowPassword] = useState(false);
 
     const handleShowPasword = event => {
@@ -20,9 +24,40 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+        SignInAccount(email, password)
+            .then(result => {
+                const user = result.user;
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Account create Successfully done ',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                navigate('/');
+                form.reset();
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
+    const { SingInGoogle } = useContext(AuthContext)
+    const handleLoginWithGoogle = () => {
+        SingInGoogle()
+            .then(result => {
+                const user = result.user;
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Account create Successfully done ',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                navigate('/')
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
-    // Authentication user by Login 
 
 
 
@@ -54,6 +89,9 @@ const Login = () => {
                     </div>
                     <button className='btn btn-warning w-full mt-8'>Login</button>
                     <small className='mt-4'>Already have no any account? please <Link to={`/register`} className='font-semibold'> Register </Link></small>
+                    <div className='mt-8'>
+                        <button onClick={handleLoginWithGoogle} className='btn  w-full '> <FcGoogle className='h-6 w-6' />Sign up using Google</button>
+                    </div>
                 </form>
             </div>
         </div>

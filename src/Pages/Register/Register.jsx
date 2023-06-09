@@ -6,9 +6,12 @@ import { FcGoogle } from 'react-icons/fc';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Provider/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
+import { updateProfile } from 'firebase/auth';
+import Swal from 'sweetalert2';
 
 const Register = () => {
 
+    const { SignUpAccount } = useContext(AuthContext);
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     const handleShowPasword = event => {
@@ -19,11 +22,34 @@ const Register = () => {
     // handle form submit with form submit hook:
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit = handleSubmit(data => {
-        console.log(data)
-
-
-        // reset();
+    const onSubmit = handleSubmit(user => {
+        console.log(user)
+        SignUpAccount(user.email, user.password)
+            .then(result => {
+                const newUser = result.user;
+                console.log(newUser)
+                updateProfile(newUser, {
+                    displayName: user.name,
+                    phoneNumber: user.phone,
+                    photoURL: user.photoUrl
+                })
+                    .then(() => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Account create Successfully done ',
+                            showConfirmButton: false,
+                            timer: 1500
+                        
+                        })
+                        reset();
+                    })
+                    .catch(error => {
+                        console.log(error.message);
+                    })
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     });
 
     // handle login authentication: 
@@ -32,7 +58,12 @@ const Register = () => {
         SingInGoogle()
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Account create Successfully done ',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 navigate('/')
             })
             .catch(error => {
