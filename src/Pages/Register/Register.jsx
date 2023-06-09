@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 
 const Register = () => {
 
-    const { SignUpAccount } = useContext(AuthContext);
+    const { SignUpAccount, updateInfo } = useContext(AuthContext);
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     const handleShowPasword = event => {
@@ -28,19 +28,16 @@ const Register = () => {
             .then(result => {
                 const newUser = result.user;
                 console.log(newUser)
-                updateProfile(newUser, {
-                    displayName: user.name,
-                    phoneNumber: user.phone,
-                    photoURL: user.photoUrl
-                })
+                updateInfo(newUser, user.name, user.photoUrl)
                     .then(() => {
                         Swal.fire({
                             icon: 'success',
                             title: 'Account create Successfully done ',
                             showConfirmButton: false,
                             timer: 1500
-                        
+
                         })
+                        navigate('/');
                         reset();
                     })
                     .catch(error => {

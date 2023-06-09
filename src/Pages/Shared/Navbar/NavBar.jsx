@@ -5,10 +5,10 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import logo from '../../../assets/Images/logo.png'
 import { AuthContext } from '../../../Provider/AuthProvider';
 import { FaUserAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const NavBar = () => {
 
-    const navigate = useNavigate();
     const { loading, user, logout } = useContext(AuthContext);
     const userName = user?.displayName?.split(" ")[0];
 
@@ -21,7 +21,7 @@ const NavBar = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
-                
+
             })
             .catch(error => {
                 console.log(error.message)

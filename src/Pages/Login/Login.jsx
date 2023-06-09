@@ -89,10 +89,10 @@ const Login = () => {
                     </div>
                     <button className='btn btn-warning w-full mt-8'>Login</button>
                     <small className='mt-4'>Already have no any account? please <Link to={`/register`} className='font-semibold'> Register </Link></small>
-                    <div className='mt-8'>
-                        <button onClick={handleLoginWithGoogle} className='btn  w-full '> <FcGoogle className='h-6 w-6' />Sign up using Google</button>
-                    </div>
                 </form>
+                <div className='mt-8'>
+                    <button onClick={handleLoginWithGoogle} className='btn  w-full '> <FcGoogle className='h-6 w-6' />Sign up using Google</button>
+                </div>
             </div>
         </div>
     );
