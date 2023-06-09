@@ -5,7 +5,7 @@ import './Register.css'
 import { FcGoogle } from 'react-icons/fc';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Provider/AuthProvider';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, json, useNavigate } from 'react-router-dom';
 import { updateProfile } from 'firebase/auth';
 import Swal from 'sweetalert2';
 
@@ -22,6 +22,7 @@ const Register = () => {
     // handle form submit with form submit hook:
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
+    // Handle login using  user email and password: 
     const onSubmit = handleSubmit(user => {
         console.log(user)
         SignUpAccount(user.email, user.password)
@@ -30,6 +31,22 @@ const Register = () => {
                 console.log(newUser)
                 updateInfo(newUser, user.name, user.photoUrl)
                     .then(() => {
+                        // send user information to database throw backend
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(user),
+                        })
+                            .then((response) => response.json())
+                            .then((data) => {
+                                console.log(data);
+                            })
+                            .catch((error) => {
+                                console.error(error);
+                            });
+
                         Swal.fire({
                             icon: 'success',
                             title: 'Account create Successfully done ',
@@ -49,7 +66,7 @@ const Register = () => {
             })
     });
 
-    // handle login authentication: 
+    // handle login using google : 
     const { SingInGoogle } = useContext(AuthContext)
     const handleLoginWithGoogle = () => {
         SingInGoogle()
