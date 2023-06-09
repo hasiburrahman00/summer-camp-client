@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -10,11 +10,25 @@ import sponsorImg3 from '../../../assets/Images/sponsor_logo4.png'
 import sponsorImg4 from '../../../assets/Images/sponsor_logo4.png'
 
 const Sponsor = () => {
+    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+    const [previewValue, setPreviewValue] = useState(null);
+
+    useEffect(() => {
+        if (viewportWidth < 768) {
+            setPreviewValue(1)
+        } else {
+            setPreviewValue(5)
+        }
+    }, [])
+
+
+
+
     return (
         <div className='bg-[#f2f7fc] py-16 text-center '>
             <div className='w-11/12 mx-auto md:w-9/12'>
                 <Swiper
-                    slidesPerView={5}
+                    slidesPerView={parseInt(previewValue)}
                     spaceBetween={30}
                     freeMode={true}
                     modules={[FreeMode, Pagination]}

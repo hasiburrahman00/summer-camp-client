@@ -1,0 +1,13 @@
+.eye-icon {
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+}
+.pass-input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.input:focus {
+    outline: 0;
+}

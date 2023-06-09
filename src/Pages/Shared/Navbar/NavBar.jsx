@@ -20,7 +20,8 @@ const NavBar = () => {
             </details>
         </li>
         <li className='font-bold'><Link to="/">Courses </Link></li>
-        <li className='font-bold'><Link to="/">Blogs </Link></li>
+        <li className='font-bold'><Link to="/login">Login </Link></li>
+        <li className='font-bold'><Link to="/register">Register </Link></li>
     </>
 
 
@@ -36,7 +37,8 @@ const NavBar = () => {
                             {navItems}
                         </ul>
                     </div>
-                    <Link to="/"><img src={logo} alt="" /></Link>
+                    {/* <Link to="/"><img src={logo} alt="" /></Link> */}
+                    <button className="btn btn-warning text-3xl font-semibold text-white">TuTorSeba</button>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
