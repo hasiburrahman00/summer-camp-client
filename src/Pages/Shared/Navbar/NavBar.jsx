@@ -49,7 +49,7 @@ const NavBar = () => {
 
 
     return (
-        <div>
+        <div className=''>
             <div className="navbar bg-base-100 py-8 z-50">
                 <div className="navbar-start">
                     <div className="dropdown">
