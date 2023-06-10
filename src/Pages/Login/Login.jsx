@@ -6,6 +6,7 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { FcGoogle } from 'react-icons/fc';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
 
@@ -40,23 +41,7 @@ const Login = () => {
                 console.log(error.message);
             })
     }
-    const { SingInGoogle } = useContext(AuthContext)
-    const handleLoginWithGoogle = () => {
-        SingInGoogle()
-            .then(result => {
-                const user = result.user;
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Account create Successfully done ',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                navigate('/')
-            })
-            .catch(error => {
-                console.log(error.message);
-            })
-    }
+    
 
 
 
@@ -90,9 +75,10 @@ const Login = () => {
                     <button className='btn btn-warning w-full mt-8'>Login</button>
                     <small className='mt-4'>Already have no any account? please <Link to={`/register`} className='font-semibold'> Register </Link></small>
                 </form>
-                <div className='mt-8'>
-                    <button onClick={handleLoginWithGoogle} className='btn  w-full '> <FcGoogle className='h-6 w-6' />Sign up using Google</button>
-                </div>
+                {/* <div className='mt-8'>
+                    <button onClick={handleLoginWithGoogle} className='btn  w-full '> <FcGoogle className='h-6 w-6' />Continue With Google</button>
+                </div> */}
+                <SocialLogin></SocialLogin>
             </div>
         </div>
     );

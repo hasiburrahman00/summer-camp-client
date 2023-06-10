@@ -2,12 +2,11 @@ import React, { useContext, useState } from 'react';
 import loginImg from '../../assets/Images/login_page.png'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import './Register.css'
-import { FcGoogle } from 'react-icons/fc';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Provider/AuthProvider';
-import { Link, json, useNavigate } from 'react-router-dom';
-import { updateProfile } from 'firebase/auth';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Register = () => {
 
@@ -41,21 +40,21 @@ const Register = () => {
                         })
                             .then((response) => response.json())
                             .then((data) => {
-                                console.log(data);
+                                if (data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Account create Successfully done ',
+                                        showConfirmButton: false,
+                                        timer: 1500
+
+                                    })
+                                }
                             })
                             .catch((error) => {
                                 console.error(error);
                             });
-
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Account create Successfully done ',
-                            showConfirmButton: false,
-                            timer: 1500
-
-                        })
                         navigate('/');
-                        reset();
                     })
                     .catch(error => {
                         console.log(error.message);
@@ -65,27 +64,6 @@ const Register = () => {
                 console.log(error.message);
             })
     });
-
-    // handle login using google : 
-    const { SingInGoogle } = useContext(AuthContext)
-    const handleLoginWithGoogle = () => {
-        SingInGoogle()
-            .then(result => {
-                const user = result.user;
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Account create Successfully done ',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                navigate('/')
-            })
-            .catch(error => {
-                console.log(error.message);
-            })
-    }
-
-
 
 
     return (
@@ -179,9 +157,7 @@ const Register = () => {
                     <small className='mt-4'>Already have an  account? please <Link to={`/login`} className='font-semibold'> Login </Link></small>
                     <div className="divider divider-vertical">OR</div>
                 </form>
-                <div>
-                    <button onClick={handleLoginWithGoogle} className='btn  w-full '> <FcGoogle className='h-6 w-6' />Sign up using Google</button>
-                </div>
+                <SocialLogin></SocialLogin>
             </div>
         </div>
     );
