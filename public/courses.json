@@ -1,0 +1,162 @@
+[
+    {
+        "courseName": "Spanish for Beginners",
+        "instructorName": "Maria Lopez",
+        "instructorEmail": "maria@example.com",
+        "availableSeats": 20,
+        "courseImage": "https://cdn.innovativelanguage.com/sns/em/blog/20/5_hardtolearn/Learning_spanish.jpg",
+        "price": 49.99,
+        "enrolledStudents": 120,
+        "seat": 50
+    },
+    {
+        "courseName": "French Conversation",
+        "instructorName": "Jean-Pierre Dubois",
+        "instructorEmail": "jean@example.com",
+        "availableSeats": 15,
+        "courseImage": "https://img.freepik.com/free-vector/happy-women-sitting-talking-each-other-dialog-psychologist-tablet-flat-illustration_74855-14078.jpg",
+        "price": 59.99,
+        "enrolledStudents": 110,
+        "seat": 50
+    },
+    {
+        "courseName": "German Grammar Masterclass",
+        "instructorName": "Hans Müller",
+        "instructorEmail": "hans@example.com",
+        "availableSeats": 10,
+        "courseImage": "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://www.filepicker.io/api/file/lHwaJNSeRmOjSBzqyHOF",
+        "price": 79.99,
+        "enrolledStudents": 150,
+        "seat": 50
+    },
+    {
+        "courseName": "Italian for Travelers",
+        "instructorName": "Giuseppe Rossi",
+        "instructorEmail": "giuseppe@example.com",
+        "availableSeats": 25,
+        "courseImage": "https://italianwithirene.files.wordpress.com/2018/11/nationalities-and-languages-in-italian-3.jpg?w=750",
+        "price": 69.99,
+        "enrolledStudents": 95,
+        "seat": 50
+    },
+    {
+        "courseName": "Chinese Mandarin 101",
+        "instructorName": "Li Wei",
+        "instructorEmail": "li@example.com",
+        "availableSeats": 30,
+        "courseImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzMVQy2JPx_qPi73HjUSZPjT5VNUfl-YguRDpv5nQlHJEF4hPOxHVHoIBsEAtgy_399kk&usqp=CAU",
+        "price": 89.99,
+        "enrolledStudents": 105,
+        "seat": 50
+    },
+    {
+        "courseName": "Japanese for Beginners",
+        "instructorName": "Yumi Tanaka",
+        "instructorEmail": "yumi@example.com",
+        "availableSeats": 20,
+        "courseImage": "https://ny.jpf.go.jp/karashi/wp-content/uploads/JF-Language-Course.jpg",
+        "price": 59.99,
+        "enrolledStudents": 135,
+        "seat": 50
+    },
+    {
+        "courseName": "Russian Language Crash Course",
+        "instructorName": "Sergei Ivanov",
+        "instructorEmail": "sergei@example.com",
+        "availableSeats": 15,
+        "courseImage": "https://images.squarespace-cdn.com/content/v1/5a9850b95417fc1f5c48bde0/1520195224853-NU65C2R65OOD88I48WLQ/Russian+Language+in+Dhaka?format=1000w",
+        "price": 79.99,
+        "enrolledStudents": 115,
+        "seat": 50
+    },
+    {
+        "courseName": "Arabic for Beginners",
+        "instructorName": "Fatima Ahmed",
+        "instructorEmail": "fatima@example.com",
+        "availableSeats": 20,
+        "courseImage": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/05/12/1041786-arabic.png",
+        "price": 69.99,
+        "enrolledStudents": 125,
+        "seat": 50
+    },
+    {
+        "courseName": "Portuguese Conversation",
+        "instructorName": "Pedro Silva",
+        "instructorEmail": "pedro@example.com",
+        "availableSeats": 15,
+        "courseImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5PpBkxqDQ54XEpvcY5P5Prbist_NSoQhuvSyOF8XMIjayOSygVPN38t89tyMCF-Vawyg&usqp=CAU",
+        "price": 59.99,
+        "enrolledStudents": 140,
+        "seat": 50
+    },
+    {
+        "courseName": "Korean Language Masterclass",
+        "instructorName": "Kim Min-ji",
+        "instructorEmail": "kim@example.com",
+        "availableSeats": 10,
+        "courseImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb28w_KGumBcACwzL1Bnxj1KjAjmSIZkUsSF-eJRxTfVSJkV6yFmONpU6Q58UedPKWGAA&usqp=CAU",
+        "price": 99.99,
+        "enrolledStudents": 150,
+        "seat": 50
+    },
+    {
+        "courseName": "English Grammar Essentials",
+        "instructorName": "John Smith",
+        "instructorEmail": "john@example.com",
+        "availableSeats": 30,
+        "courseImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIpVkSoZcVIGDQXjz_62sETbeK1WzHeNYee96NIATF7uB0yEFIz9X5aloZW_c93zFhfsY&usqp=CAU",
+        "price": 49.99,
+        "enrolledStudents": 130,
+        "seat": 50
+    },
+    {
+        "courseName": "Dutch for Beginners",
+        "instructorName": "Eva van der Berg",
+        "instructorEmail": "eva@example.com",
+        "availableSeats": 20,
+        "courseImage": "https://learndutch.academy/wp-content/uploads/2019/11/Learn-Dutch-for-Beginners.png",
+        "price": 59.99,
+        "enrolledStudents": 105,
+        "seat": 50
+    },
+    {
+        "courseName": "Swedish Language Immersion",
+        "instructorName": "Lars Andersson",
+        "instructorEmail": "lars@example.com",
+        "availableSeats": 15,
+        "courseImage": "https://www.geektonight.com/wp-content/uploads/Best-Swedish-Language-Courses.webp",
+        "price": 79.99,
+        "enrolledStudents": 110,
+        "seat": 50
+    },
+    {
+        "courseName": "Hindi for Beginners",
+        "instructorName": "Amit Patel",
+        "instructorEmail": "amit@example.com",
+        "availableSeats": 25,
+        "courseImage": "https://www.geektonight.com/wp-content/uploads/Best-Hindi-Language-Courses.webp",
+        "price": 69.99,
+        "enrolledStudents": 150,
+        "seat": 50
+    },
+    {
+        "courseName": "Finnish Conversation",
+        "instructorName": "Mika Virtanen",
+        "instructorEmail": "mika@example.com",
+        "availableSeats": 20,
+        "courseImage": "https://i.ytimg.com/vi/SGtwbphiSkE/maxresdefault.jpg",
+        "price": 59.99,
+        "enrolledStudents": 120,
+        "seat": 50
+    },
+    {
+        "courseName": "Greek Language Masterclass",
+        "instructorName": "Sophia Papadopoulos",
+        "instructorEmail": "sophia@example.com",
+        "availableSeats": 10,
+        "courseImage": "https://3gymlamias.gr/wp-content/uploads/2018/06/kafeneion.png",
+        "price": 79.99,
+        "enrolledStudents": 130,
+        "seat": 50
+    }
+]

@@ -10,6 +10,7 @@ import Dashboard from '../Layout/Dashboard';
 import CartClasses from '../Pages/Student/CartClasses/CartClasses';
 import MyClasses from '../Pages/Student/MyClasses/MyClasses';
 import PaymentHistory from '../Pages/Student/PaymentHistory/PaymentHistory';
+import Courses from '../Pages/Courses/Courses';
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path: 'courses', 
+                element: <Courses></Courses>
             }
         ]
     },
