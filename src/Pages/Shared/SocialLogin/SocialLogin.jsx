@@ -14,7 +14,7 @@ const SocialLogin = () => {
                 const userInfo = {
                     name: user.displayName,
                     email: user.email,
-                    photoUrl: user.photoURL,
+                    photoURL: user.photoURL,
                 }
                 fetch('http://localhost:5000/users', {
                     method: 'POST',

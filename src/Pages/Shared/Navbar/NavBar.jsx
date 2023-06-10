@@ -85,7 +85,7 @@ const NavBar = () => {
                                     <div className="dropdown dropdown-bottom dropdown-end">
                                         <label tabIndex={0} className=" m-1"><IoMdArrowDropdown className='h-6 w-6' /></label>
                                         <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 text-black z-50 ">
-                                            <li><Link>Dashboard</Link></li>
+                                            <li><Link to={`/dashboard`}>Dashboard</Link></li>
                                             <li><Link>My Accounts</Link></li>
                                             <li><Link>My Orders</Link></li>
                                             <li><Link>My Courses</Link></li>

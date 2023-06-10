@@ -28,7 +28,7 @@ const Register = () => {
             .then(result => {
                 const newUser = result.user;
                 console.log(newUser)
-                updateInfo(newUser, user.name, user.photoUrl)
+                updateInfo(newUser, user.name, user.photoURL)
                     .then(() => {
                         // send user information to database throw backend
                         fetch('http://localhost:5000/users', {
@@ -110,7 +110,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input {...register("photoUrl")} type="text" placeholder="Photo URL" className="input input-bordered" />
+                            <input {...register("photoURL")} type="text" placeholder="Photo URL" className="input input-bordered" />
                         </div>
 
                         <div className="form-control">
