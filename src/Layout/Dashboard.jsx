@@ -2,11 +2,10 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { Link, Outlet } from 'react-router-dom';
 import { AiOutlineMenu, AiTwotoneHome } from 'react-icons/ai';
-import { BsPersonCircle } from 'react-icons/bs';
+import { BsPersonCircle, BsWalletFill } from 'react-icons/bs';
 import { MdNotificationsActive } from 'react-icons/md';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart, FaWallet } from 'react-icons/fa';
 import { BsFillCameraVideoFill } from 'react-icons/bs';
-import { LuHistory } from 'react-icons/lu';
 
 const Dashboard = () => {
 
@@ -44,7 +43,7 @@ const Dashboard = () => {
                         {/* Sidebar content here */}
                         <li className='font-semibold text-lg'><Link to="/dashboard/cartClasses"> <FaShoppingCart /> Cart Classes</Link></li>
                         <li className='font-semibold text-lg'><Link to="/dashboard/myClasses"> <BsFillCameraVideoFill /> My Classes</Link></li>
-                        <li className='font-semibold text-lg'><Link to="/dashboard/paymentHistory"><LuHistory /> Payment History</Link></li>
+                        <li className='font-semibold text-lg'><Link to="/dashboard/paymentHistory"><BsWalletFill /> Payment History</Link></li>
 
                         <hr  className='my-4 border-black border-1'/>
                         {commonElement}

@@ -6,11 +6,14 @@ import logo from '../../../assets/Images/logo.png'
 import { AuthContext } from '../../../Provider/AuthProvider';
 import { FaUserAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import UseCarts from '../../../Hooks/UseCarts';
 
 const NavBar = () => {
 
+    const [cart] = UseCarts();
     const { loading, user, logout } = useContext(AuthContext);
     const userName = user?.displayName?.split(" ")[0];
+
 
     const handleLogout = () => {
         logout()
@@ -43,8 +46,6 @@ const NavBar = () => {
             </details>
         </li>
         <li className='font-bold'><Link to="/courses">Courses </Link></li>
-        <li className='font-bold'><Link to="/login">Login </Link></li>
-        <li className='font-bold'><Link to="/register">Register </Link></li>
     </>
 
 
@@ -69,10 +70,13 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <button className="flex mr-4">
-                        <AiOutlineShoppingCart className='h-8 w-8' />
-                        <div className="badge badge-warning font-semibold">+99</div>
-                    </button>
+                    <Link to={`/dashboard/cartClasses`}>
+                        <button className="flex mr-4">
+                            <AiOutlineShoppingCart className='h-8 w-8' />
+                            <div className="badge badge-warning font-semibold">+{cart?.length}</div>
+                        </button>
+                    </Link>
+
 
 
                     {/* user profile or login button  */}
@@ -95,7 +99,7 @@ const NavBar = () => {
                                 </button>
                             </> :
                             <>
-                               <Link to={`/login`}> <button className='btn btn-warning'><FaUserAlt className='h-6 w-6' />Sign In</button></Link>
+                                <Link to={`/login`}> <button className='btn btn-warning'><FaUserAlt className='h-6 w-6' />Sign In</button></Link>
                             </>
                     }
                 </div>
