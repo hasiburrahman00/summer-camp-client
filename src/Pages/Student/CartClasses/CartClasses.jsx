@@ -5,7 +5,7 @@ import CartItem from '../../Shared/Components/CartItem/CartItem';
 const CartClasses = () => {
     const [cart] = UseCarts();
     console.log(cart);
-    const totalPrice = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+    const totalPrice = cart?.reduce((sum, item) => sum + item.price, 0).toFixed(2);
     const { courseId, courseName, email, instructorName,instructorEmail, price, ratting, seat, _id } = cart;
 
     return (

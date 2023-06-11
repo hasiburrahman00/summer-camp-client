@@ -11,7 +11,6 @@ const ManageUsers = () => {
     })
 
     const handleDelete = (userId) => {
-
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -38,11 +37,41 @@ const ManageUsers = () => {
                     })
             }
         })
-
-
-
     }
 
+    const handleAdmin = (user) => {
+        fetch(`http://localhost:5000/users/admin/${user?._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        icon: 'success',
+                        title: `${user.name} set as an Admin `,
+                        showConfirmButton: true,
+                    })
+                }
+            })
+    }
+
+    const handleInstructor = (user) => {
+        fetch(`http://localhost:5000/users/instructor/${user?._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        icon: 'success',
+                        title: `${user.name} set as an Instructor `,
+                        showConfirmButton: true,
+                    })
+                }
+            })
+    }
 
     return (
         <div className='bg-slate-100 w-10/12 p-12 rounded-lg'>
@@ -89,8 +118,8 @@ const ManageUsers = () => {
                                         {user.email}
                                     </td>
                                     <td>
-                                        <button className='btn btn-xs btn-warning mx-2'>Instructor</button>
-                                        <button className='btn btn-xs mx-2 btn-success'>Admin</button>
+                                        <button onClick={() => handleInstructor(user)} disabled={`${user?.role === 'instructor' ? 'disabled' : ''}`} className='btn btn-xs btn-warning mx-2'>Instructor</button>
+                                        <button disabled={`${user?.role === 'admin' ? 'disabled' : ''}`} onClick={() => handleAdmin(user)} className={`btn btn-xs mx-2 btn-success `}>Admin</button>
                                     </td>
                                     <th>
                                         <button onClick={() => handleDelete(user._id)} className="btn text-black font-bold btn-sm btn-error"><BsTrash3 className='h-8' /></button>
