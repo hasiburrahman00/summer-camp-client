@@ -32,11 +32,13 @@ const CartItem = ({ cartItem, index }) => {
                     .then(data => {
                         if (data.deletedCount > 0) {
                             refetch();
-                            Swal.fire(
-                                'Deleted!',
-                                'Your Cart Course has been deleted.',
-                                'success',
-                                { showConfirmButton: false }
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Your work has been saved',
+                                showConfirmButton: false,
+                                timer: 700
+                            }
                             )
                         }
                     })

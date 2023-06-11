@@ -11,6 +11,10 @@ import CartClasses from '../Pages/Student/CartClasses/CartClasses';
 import MyClasses from '../Pages/Student/MyClasses/MyClasses';
 import PaymentHistory from '../Pages/Student/PaymentHistory/PaymentHistory';
 import Courses from '../Pages/Courses/Courses';
+import AddCourse from '../Pages/Admin/AddCourse';
+import AdminHome from '../Pages/Admin/AdminHome';
+import ManageCourse from '../Pages/Admin/ManageCourse';
+import ManageUsers from '../Pages/Admin/ManageUsers';
 
 const router = createBrowserRouter([
     {
@@ -50,6 +54,22 @@ const router = createBrowserRouter([
             {
                 path: 'paymentHistory',
                 element: <PaymentHistory></PaymentHistory>
+            },
+            {
+                path: 'addCourse', 
+                element: <AddCourse></AddCourse>
+            },
+            {
+                path: 'adminHome',
+                element: <AdminHome></AdminHome>
+            },
+            {
+                path: 'manageCourses',
+                element: <ManageCourse></ManageCourse>
+            },
+            {
+                path: 'manageUsers',
+                element: <ManageUsers></ManageUsers>
             }
         ]
     }
