@@ -15,6 +15,7 @@ import AddCourse from '../Pages/Admin/AddCourse';
 import AdminHome from '../Pages/Admin/AdminHome';
 import ManageCourse from '../Pages/Admin/ManageCourse';
 import ManageUsers from '../Pages/Admin/ManageUsers';
+import Instructors from '../Pages/Instructors/Instructors';
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: 'courses', 
                 element: <Courses></Courses>
+            },
+            {
+                path: 'instructors',
+                element: <Instructors></Instructors>
             }
         ]
     },

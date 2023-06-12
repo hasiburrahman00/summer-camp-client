@@ -35,16 +35,7 @@ const NavBar = () => {
     const navItems = <>
         <li className='font-bold' ><Link to="/">Home</Link></li>
         <li className='font-bold'><Link to="/">About us</Link></li>
-        <li className='font-bold' tabIndex={0}>
-            <details>
-                <summary>Pages</summary>
-                <ul className="p-2 z-50">
-                    <li className='font-bold'><Link to="/">Instructors</Link></li>
-                    <li className='font-bold'><Link to="/">Top courses</Link></li>
-                    <li className='font-bold'><Link to="/">Popular Instructors</Link></li>
-                </ul>
-            </details>
-        </li>
+        <li className='font-bold'><Link to={`/instructors`}>Instructors</Link></li>
         <li className='font-bold'><Link to="/courses">Courses </Link></li>
     </>
 
