@@ -6,7 +6,7 @@ const Instructors = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('http://localhost:5000/indtructors')
             .then(res => res.json())
             .then(data => setInstructors(data))
     }, [])
@@ -15,16 +15,16 @@ const Instructors = () => {
 
 
     return (
-        <div className='md:grid grid-cols-3 w-10/12 mx-auto'>
+        <div className='md:grid grid-cols-3 w-10/12 mx-auto gap-6'>
             {
                 instructors?.map(instructor => <div key={instructor?._id} className="card w-96 bg-slate-800 text-white shadow-xl">
                     <figure className="px-10 pt-10">
-                        <img src={instructor?.photoURL} alt="Shoes" className="rounded-full w-1/2" />
+                        <img src={instructor?.photoURL} alt="Shoes" className="rounded-full w-40 h-60" />
                     </figure>
                     <div className="card-body ">
                         <div>
-                            <h2 className="card-title">{instructor?.name}</h2>
-                            <p>{instructor?.email}</p>
+                            <h2 className="card-title">{instructor?.instructorName}</h2>
+                            <p>{instructor?.instructorEmail}</p>
                         </div>
                         <div className="card-actions mt-4">
                             <button className="btn btn-sm btn-warning">View Details</button>
