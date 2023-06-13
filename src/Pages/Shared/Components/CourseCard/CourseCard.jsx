@@ -13,7 +13,7 @@ const CourseCard = ({ course }) => {
 
     const handleAddCart = () => {
         if (user && user.email) {
-            const orderItem = { email: user.email, courseId: _id, price, seat, ratting, courseName, ratting, instructorName, courseImage, instructorEmail }
+            const orderItem = { email: user.email, courseId: _id, price, seat, courseName, ratting, instructorName, courseImage, instructorEmail }
             fetch(`http://localhost:5000/carts`, {
                 method: 'POST',
                 headers: {

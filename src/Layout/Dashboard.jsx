@@ -9,13 +9,15 @@ import { BsFillCameraVideoFill } from 'react-icons/bs';
 import { HiUsers } from 'react-icons/hi';
 import { GrAddCircle } from 'react-icons/gr';
 import { MdManageAccounts } from 'react-icons/md';
+import useAdmin from '../Hooks/useAdmin';
 
 const Dashboard = () => {
 
     // Loged in user information: 
     const { user } = useContext(AuthContext)
-    const isAdmin = true; //Todo : load data from the server 
+    // const isAdmin = false; //Todo : load data from the server 
 
+    const [isAdmin] = useAdmin();
 
 
 

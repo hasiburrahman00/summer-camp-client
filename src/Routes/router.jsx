@@ -16,6 +16,8 @@ import AdminHome from '../Pages/Admin/AdminHome';
 import ManageCourse from '../Pages/Admin/ManageCourse';
 import ManageUsers from '../Pages/Admin/ManageUsers';
 import Instructors from '../Pages/Instructors/Instructors';
+import Checkout from '../Pages/Student/Payment/Checkout';
+import Payment from '../Pages/Student/Payment/Payment';
 
 const router = createBrowserRouter([
     {
@@ -75,6 +77,10 @@ const router = createBrowserRouter([
             {
                 path: 'manageUsers',
                 element: <ManageUsers></ManageUsers>
+            },
+            {
+                path: 'checkout',
+                element: <Payment></Payment>
             }
         ]
     }

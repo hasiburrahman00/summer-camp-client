@@ -1,12 +1,13 @@
 import React from 'react';
 import UseCarts from '../../../Hooks/UseCarts';
 import CartItem from '../../Shared/Components/CartItem/CartItem';
+import { Link } from 'react-router-dom';
 
 const CartClasses = () => {
     const [cart] = UseCarts();
     console.log(cart);
-    const totalPrice = cart?.reduce((sum, item) => sum + item.price, 0).toFixed(2);
-    const { courseId, courseName, email, instructorName,instructorEmail, price, ratting, seat, _id } = cart;
+    const totalPrice = cart?.reduce((sum, item) => sum + item.price, 0)?.toFixed(2);
+    const { courseId, courseName, email, instructorName, instructorEmail, price, ratting, seat, _id } = cart;
 
     return (
         <div className='bg-slate-100 p-12 my-12 rounded-lg w-10/12 mx-auto'>
@@ -14,7 +15,9 @@ const CartClasses = () => {
                 <h2 className='text-2xl font-bold mb-4  uppercase'>Total Order: {cart.length} </h2>
                 <div className='flex space-x-5'>
                     <h2 className='text-lg font-bold text-red-400 uppercase'>Total Price : ${totalPrice}</h2>
-                    <button className='btn btn-warning btn-sm '>Pay Now </button>
+                    <Link to={`/dashboard/checkout`}>
+                        <button className='btn btn-warning btn-sm '>Pay Now </button>
+                    </Link>
                 </div>
             </div>
             <div className="overflow-x-auto">
