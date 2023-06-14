@@ -6,7 +6,7 @@ const Instructors = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/indtructors')
+        fetch('https://summer-camp-server-topaz.vercel.app/indtructors')
             .then(res => res.json())
             .then(data => setInstructors(data))
     }, [])

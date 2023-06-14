@@ -10,14 +10,33 @@ import { HiUsers } from 'react-icons/hi';
 import { GrAddCircle } from 'react-icons/gr';
 import { MdManageAccounts } from 'react-icons/md';
 import useAdmin from '../Hooks/useAdmin';
+import { IoMdExit } from 'react-icons/io';
+import useInstructor from '../Hooks/useInstructor';
 
 const Dashboard = () => {
 
     // Loged in user information: 
-    const { user } = useContext(AuthContext)
-    // const isAdmin = false; //Todo : load data from the server 
-
+    const { user, logout } = useContext(AuthContext)
     const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+    console.log(isInstructor);
+
+
+    const handleLogout = event => {
+        logout()
+            .then(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Logout Account Successfully ',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
 
 
 
@@ -25,9 +44,10 @@ const Dashboard = () => {
     // some common element for all types of user like: student, Instructor, Admin:
     const commonElement = <>
         <li className='font-semibold text-lg '><Link to={`/`}><AiOutlineMenu /> Home</Link></li>
-        <li className='font-semibold text-lg '><Link to={`/`}><BsFillCameraVideoFill /> Courses</Link></li>
-        <li className='font-semibold text-lg '><Link to={`/`}><BsPersonCircle /> Instructors</Link></li>
-        <li className='font-semibold text-lg '><Link to={`/`}><MdNotificationsActive /> Announcement</Link></li>
+        <li className='font-semibold text-lg '><Link to={`/courses`}><BsFillCameraVideoFill /> Courses</Link></li>
+        <li className='font-semibold text-lg '><Link to={`/instructors`}><BsPersonCircle /> Instructors</Link></li>
+        <li className='font-semibold text-lg '><Link to={`/dashboard/notificatons`}><MdNotificationsActive /> Announcement</Link></li>
+        <li onClick={handleLogout} className='font-semibold text-lg '><Link to={`/`}> <IoMdExit /> Logout</Link></li>
     </>
 
     return (
@@ -50,17 +70,23 @@ const Dashboard = () => {
                         </div>
                         {/* Sidebar content here */}
                         {
-                            isAdmin ? <>
-                                <li className='font-semibold text-lg'><Link to="/dashboard/adminHome"> <AiTwotoneHome /> Admin Home</Link></li>
-                                <li className='font-semibold text-lg'><Link to="/dashboard/manageUsers"> <MdManageAccounts />Manage Users</Link></li>
+                            isInstructor ? <>
+                                <li className='font-semibold text-lg'><Link to="/dashboard/adminHome"> <AiTwotoneHome /> Instructor  Home</Link></li>
                                 <li className='font-semibold text-lg'><Link to="/dashboard/addCourse"><GrAddCircle /> Add Course</Link></li>
                                 <li className='font-semibold text-lg'><Link to="/dashboard/manageCourses"><BsFillCameraVideoFill /> Manage Courses</Link></li>
-                            </>
-                                : <>
-                                    <li className='font-semibold text-lg'><Link to="/dashboard/cartClasses"> <FaShoppingCart /> Cart Classes</Link></li>
-                                    <li className='font-semibold text-lg'><Link to="/dashboard/myClasses"> <BsFillCameraVideoFill /> My Classes</Link></li>
-                                    <li className='font-semibold text-lg'><Link to="/dashboard/paymentHistory"><BsWalletFill /> Payment History</Link></li>
+                            </> :
+                                isAdmin ? <>
+                                    <li className='font-semibold text-lg'><Link to="/dashboard/adminHome"> <AiTwotoneHome /> Admin Home</Link></li>
+                                    <li className='font-semibold text-lg'><Link to="/dashboard/manageUsers"> <MdManageAccounts />Manage Users</Link></li>
+                                    <li className='font-semibold text-lg'><Link to="/dashboard/addCourse"><GrAddCircle /> Add Course</Link></li>
+                                    <li className='font-semibold text-lg'><Link to="/dashboard/manageCourses"><BsFillCameraVideoFill /> Manage Courses</Link></li>
                                 </>
+                                    :
+                                    <>
+                                        <li className='font-semibold text-lg'><Link to="/dashboard/cartClasses"> <FaShoppingCart /> Cart Classes</Link></li>
+                                        <li className='font-semibold text-lg'><Link to="/dashboard/myClasses"> <BsFillCameraVideoFill /> My Classes</Link></li>
+                                        <li className='font-semibold text-lg'><Link to="/dashboard/paymentHistory"><BsWalletFill /> Payment History</Link></li>
+                                    </>
                         }
 
                         <hr className='my-4 border-black border-1' />

@@ -34,7 +34,6 @@ const NavBar = () => {
 
     const navItems = <>
         <li className='font-bold' ><Link to="/">Home</Link></li>
-        <li className='font-bold'><Link to="/">About us</Link></li>
         <li className='font-bold'><Link to={`/instructors`}>Instructors</Link></li>
         <li className='font-bold'><Link to="/courses">Courses </Link></li>
     </>

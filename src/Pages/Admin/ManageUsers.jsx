@@ -2,12 +2,14 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { BsTrash3 } from 'react-icons/bs';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const ManageUsers = () => {
 
+    const axiosSecure = useAxiosSecure();
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch('http://localhost:5000/users')
-        return res.json();
+        const res = await axiosSecure.get('/users')
+        return res.data;
     })
 
     const handleDelete = (userId) => {
@@ -21,7 +23,7 @@ const ManageUsers = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/${userId}`, {
+                fetch(`https://summer-camp-server-topaz.vercel.app/users/${userId}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -40,7 +42,7 @@ const ManageUsers = () => {
     }
 
     const handleAdmin = (user) => {
-        fetch(`http://localhost:5000/users/admin/${user?._id}`, {
+        fetch(`https://summer-camp-server-topaz.vercel.app/users/admin/${user?._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -57,7 +59,7 @@ const ManageUsers = () => {
     }
 
     const handleInstructor = (user) => {
-        fetch(`http://localhost:5000/users/instructor/${user?._id}`, {
+        fetch(`https://summer-camp-server-topaz.vercel.app/users/instructor/${user?._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -94,7 +96,7 @@ const ManageUsers = () => {
                     </thead>
                     <tbody>
                         {
-                            users.map((user, index) =>
+                            users?.map((user, index) =>
                                 <tr key={user._id}>
                                     <th>
                                         <label>

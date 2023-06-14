@@ -4,6 +4,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import app from '../Firebase/firebase.config';
 import axios from 'axios';
 
+
 const auth = getAuth(app);
 export const AuthContext = createContext();
 const googleProvider = new GoogleAuthProvider();
@@ -11,7 +12,7 @@ const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
@@ -19,13 +20,15 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             // jwt token: 
             if (currentUser) {
-                axios.post('http://localhost:5000/jwt', { email: currentUser.email })
+                axios.post('https://summer-camp-server-topaz.vercel.app/jwt', { email: currentUser.email })
                     .then(data => {
                         console.log(data.data);
                         localStorage.setItem('access-token', data.data)
+                        setLoading(false);
                     })
             } else {
                 localStorage.removeItem('access-token');
+                setLoading(false);
             }
 
             setLoading(false);

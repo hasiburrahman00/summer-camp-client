@@ -5,7 +5,7 @@ const TopCourses = () => {
     const [topCourses, setTopCourses] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/popularCourses')
+        fetch('https://summer-camp-server-topaz.vercel.app/popularCourses')
             .then(res => res.json())
             .then(data => setTopCourses(data))
     }, [])

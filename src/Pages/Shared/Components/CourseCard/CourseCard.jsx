@@ -5,16 +5,19 @@ import '@smastrom/react-rating/style.css'
 import { AuthContext } from '../../../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import UseCarts from '../../../../Hooks/UseCarts';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 const CourseCard = ({ course }) => {
     const { user } = useContext(AuthContext);
     const { courseName, courseImage, instructorName, seat, price, ratting, _id, instructorEmail } = course;
     const [, refetch] = UseCarts();
+    const navigate = useNavigate();
+
 
     const handleAddCart = () => {
         if (user && user.email) {
             const orderItem = { email: user.email, courseId: _id, price, seat, courseName, ratting, instructorName, courseImage, instructorEmail }
-            fetch(`http://localhost:5000/carts`, {
+            fetch(`https://summer-camp-server-topaz.vercel.app/carts`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -35,6 +38,20 @@ const CourseCard = ({ course }) => {
                     }
                 })
 
+        } else {
+            Swal.fire({
+                title: 'Are you logged in?',
+                text: "You have to login for add to cart ",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login Now'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login');
+                }
+            })
         }
     }
 
@@ -58,8 +75,8 @@ const CourseCard = ({ course }) => {
                     <div className="card-actions justify-end items-baseline mt-4">
                         <div className='space-x-2'>
                             <button className='btn  btn-sm cursor-text btn-success text-semibold'>Seat {seat} </button>
-                            <button onClick={handleAddCart} className='btn btn-sm '><BsFillCartFill />Cart </button>
-                            <button className='btn btn-warning btn-sm '>Buy now </button>
+                            <button disabled={seat == 0 ? true : ''} onClick={handleAddCart} className='btn btn-sm btn-warning'><BsFillCartFill />Cart </button>
+                            {/* <button className='btn btn-warning btn-sm '>Buy now </button> */}
                         </div>
                     </div>
                 </div>

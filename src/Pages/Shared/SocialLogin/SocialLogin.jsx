@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../../Provider/AuthProvider';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const SocialLogin = () => {
     const navigate = useNavigate()
+    const locaion = useLocation();
+    const from = locaion?.state?.from?.pathname || '/';
+
     const { SingInGoogle } = useContext(AuthContext)
     const handleLoginWithGoogle = () => {
         SingInGoogle()
@@ -16,7 +19,7 @@ const SocialLogin = () => {
                     email: user.email,
                     photoURL: user.photoURL,
                 }
-                fetch('http://localhost:5000/users', {
+                fetch('https://summer-camp-server-topaz.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -39,7 +42,7 @@ const SocialLogin = () => {
                         console.error(error);
                     });
 
-                navigate('/')
+                navigate(from);
             })
             .catch(error => {
                 console.log(error.message);

@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 const ManageCourse = () => {
 
     const { data: courses = [], refetch } = useQuery(['courses'], async () => {
-        const res = await fetch('http://localhost:5000/manageCourse')
+        const res = await fetch('https://summer-camp-server-topaz.vercel.app/manageCourse')
         return res.json();
     })
 
@@ -26,7 +26,7 @@ const ManageCourse = () => {
             feedbacks = { feedback: text }
         }
 
-        fetch(`http://localhost:5000/courses/${id}`, {
+        fetch(`https://summer-camp-server-topaz.vercel.app/courses/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

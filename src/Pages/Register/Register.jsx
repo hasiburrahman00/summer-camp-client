@@ -31,7 +31,7 @@ const Register = () => {
                 updateInfo(newUser, user.name, user.photoURL)
                     .then(() => {
                         // send user information to database throw backend
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://summer-camp-server-topaz.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
@@ -128,7 +128,7 @@ const Register = () => {
                                 <input {...register("password", {
                                     required: true,
                                     minLength: 6,
-                                    pattern: /(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
+                                    pattern: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-+_!@#$%^&*.,?]).{6,}$/,
 
                                 })} type={showPassword ? 'text' : 'password'} placeholder="Pasword" className="input input-bordered w-full border-r-0 pass-input" />
                                 <button onClick={handleShowPasword} className='input input-bordered eye-icon'>

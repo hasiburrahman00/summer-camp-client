@@ -25,7 +25,7 @@ const CartItem = ({ cartItem, index }) => {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/carts/${item}`, {
+                fetch(`https://summer-camp-server-topaz.vercel.app/carts/${item}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

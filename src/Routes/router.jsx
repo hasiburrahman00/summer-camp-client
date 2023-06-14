@@ -18,6 +18,9 @@ import ManageUsers from '../Pages/Admin/ManageUsers';
 import Instructors from '../Pages/Instructors/Instructors';
 import Checkout from '../Pages/Student/Payment/Checkout';
 import Payment from '../Pages/Student/Payment/Payment';
+import ErrorPage from '../Pages/ErrorPage/ErrorPage';
+import PrivateRoute from './PrivateRoute';
+import Notification from '../Pages/Notification/Notification';
 
 const router = createBrowserRouter([
     {
@@ -48,7 +51,7 @@ const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             {
                 path: 'cartClasses',
@@ -81,8 +84,16 @@ const router = createBrowserRouter([
             {
                 path: 'checkout',
                 element: <Payment></Payment>
+            },
+            {
+                path: 'notificatons',
+                element: <Notification></Notification>
             }
         ]
+    }, 
+    {
+        path: '*', 
+        element: <ErrorPage></ErrorPage>
     }
 ])
 

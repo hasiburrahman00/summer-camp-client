@@ -20,7 +20,7 @@ const AddCourse = () => {
         const courseInfo = { instructorName, instructorEmail, courseName, price, availableSeats, courseImage, status: 'pending', photoURL: user.photoURL, enrolled: 0 }
         console.log(courseInfo)
 
-        fetch('http://localhost:5000/courses', {
+        fetch('https://summer-camp-server-topaz.vercel.app/courses', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

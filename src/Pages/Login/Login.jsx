@@ -3,7 +3,7 @@ import loginImg from '../../assets/Images/login_page.png'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import './Login.css'
 import { AuthContext } from '../../Provider/AuthProvider';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { FcGoogle } from 'react-icons/fc';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
@@ -13,6 +13,10 @@ const Login = () => {
     const navigate = useNavigate()
     const { SignInAccount } = useContext(AuthContext)
     const [showPassword, setShowPassword] = useState(false);
+    const locaion = useLocation();
+    const from = locaion?.state?.from?.pathname;
+
+
 
     const handleShowPasword = event => {
         event.preventDefault();
@@ -34,7 +38,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
-                navigate('/');
+                navigate(from || '/');
                 form.reset();
             })
             .catch(error => {
