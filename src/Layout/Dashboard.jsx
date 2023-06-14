@@ -68,25 +68,30 @@ const Dashboard = () => {
                             <h4 className='text-xl font-bold mt-2'>{user?.displayName}</h4>
                             <h6 className='font-semibold'>{user?.email}</h6>
                         </div>
-                        {/* Sidebar content here */}
                         {
-                            isInstructor ? <>
+                            isInstructor && <>
                                 <li className='font-semibold text-lg'><Link to="/dashboard/adminHome"> <AiTwotoneHome /> Instructor  Home</Link></li>
                                 <li className='font-semibold text-lg'><Link to="/dashboard/addCourse"><GrAddCircle /> Add Course</Link></li>
                                 <li className='font-semibold text-lg'><Link to="/dashboard/manageCourses"><BsFillCameraVideoFill /> Manage Courses</Link></li>
-                            </> :
-                                isAdmin ? <>
-                                    <li className='font-semibold text-lg'><Link to="/dashboard/adminHome"> <AiTwotoneHome /> Admin Home</Link></li>
-                                    <li className='font-semibold text-lg'><Link to="/dashboard/manageUsers"> <MdManageAccounts />Manage Users</Link></li>
-                                    <li className='font-semibold text-lg'><Link to="/dashboard/addCourse"><GrAddCircle /> Add Course</Link></li>
-                                    <li className='font-semibold text-lg'><Link to="/dashboard/manageCourses"><BsFillCameraVideoFill /> Manage Courses</Link></li>
-                                </>
-                                    :
-                                    <>
-                                        <li className='font-semibold text-lg'><Link to="/dashboard/cartClasses"> <FaShoppingCart /> Cart Classes</Link></li>
-                                        <li className='font-semibold text-lg'><Link to="/dashboard/myClasses"> <BsFillCameraVideoFill /> My Classes</Link></li>
-                                        <li className='font-semibold text-lg'><Link to="/dashboard/paymentHistory"><BsWalletFill /> Payment History</Link></li>
-                                    </>
+                            </>
+                        }
+                        {/* Sidebar content here */}
+                        {
+                            isAdmin && <>
+                                <li className='font-semibold text-lg'><Link to="/dashboard/adminHome"> <AiTwotoneHome /> Admin Home</Link></li>
+                                <li className='font-semibold text-lg'><Link to="/dashboard/manageUsers"> <MdManageAccounts />Manage Users</Link></li>
+                                <li className='font-semibold text-lg'><Link to="/dashboard/addCourse"><GrAddCircle /> Add Course</Link></li>
+                                <li className='font-semibold text-lg'><Link to="/dashboard/manageCourses"><BsFillCameraVideoFill /> Manage Courses</Link></li>
+                            </>
+
+
+                        }
+                        {
+                            !isAdmin && !isInstructor && <>
+                                <li className='font-semibold text-lg'><Link to="/dashboard/cartClasses"> <FaShoppingCart /> Cart Classes</Link></li>
+                                <li className='font-semibold text-lg'><Link to="/dashboard/myClasses"> <BsFillCameraVideoFill /> My Classes</Link></li>
+                                <li className='font-semibold text-lg'><Link to="/dashboard/paymentHistory"><BsWalletFill /> Payment History</Link></li>
+                            </>
                         }
 
                         <hr className='my-4 border-black border-1' />
